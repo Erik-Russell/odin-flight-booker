@@ -1,24 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A One-way flight booker.
 
-Things you may want to cover:
+Lots of practive populating and buidling dropdown menus, radio buttons, and nested submissions
 
-* Ruby version
+## Screen 1: Search
+four dropdown menus to search for available flights
+- departure airport
+- arrival airport
+- date
+- number of passengers
 
-* System dependencies
+## Screen 2: Pick a Flight
+choose from among available flights
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Screen 3: Passenger Information
+take user's booking information
