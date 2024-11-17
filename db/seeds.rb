@@ -7,3 +7,14 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require 'csv'
+
+csv_path = Rails.root.join('db', 'airports.csv')
+CSV.foreach(csv_path, headers: true) do |row|
+  Airport.find_or_create_by!(code: row['code']) do |airport|
+    airport.name = row['name']
+    airport.location = row['location']
+  end
+end
+
+puts "Seeded airports from CSV file."
