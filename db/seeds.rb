@@ -23,3 +23,20 @@ CSV.foreach(csv_path, headers: true) do |row|
 end
 
 puts "Total airports seeded: #{Airport.count}"
+
+Flight.create!([{
+  flight_number: 'AA756',
+  start: Time.now + 3.hours,
+  duration: 4.hours,
+  arrival_airport_id: 33,
+  departure_airport_id: 55
+},
+{
+  flight_number: 'SK246',
+  start: Time.now + 1.day,
+  duration: 4.hours,
+  arrival_airport_id: 23,
+  departure_airport_id: 25
+}])
+
+puts "Created Flights"
