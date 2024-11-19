@@ -1,0 +1,10 @@
+<h1>Flights</h1>
+<p>Arrival Airport</p>
+<%= select(:get, :arrival_airport_id, @airport_name_options) %>
+<p>Departure Airport</p>
+<%= select(:get, :departure_airport_id, @airport_name_options) %>
+
+<%= select_tag :start,
+options_for_select(@formatted_flight_times.map { |formatted, time| [formatted, time.to_s] }),
+prompt: "Select a datetime",
+class: "form-control" %>
