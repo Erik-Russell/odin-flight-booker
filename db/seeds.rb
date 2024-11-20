@@ -10,7 +10,7 @@
 require 'csv'
 require 'faker'
 
-csv_path = Rails.root.join('db', 'large_airports.csv')
+csv_path = Rails.root.join('db', 'large_us_airports.csv')
 
 puts "Seeding airports from: #{csv_path}"
 
