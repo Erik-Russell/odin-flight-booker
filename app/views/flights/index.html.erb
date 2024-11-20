@@ -11,7 +11,7 @@
     class: "form-control" %>
 
   <p>Number of Passengers</p>
-  <%= form.select :passengers, [1, 2, 3, 4]  %>
+  <%= form.select :passengers, [1, 2, 3, 4], prompt: 'Select the number of passengers'  %>
 
   <p>
   <%= form.submit "Search Flights", class: "btn btn-primary" %>
@@ -20,22 +20,16 @@
 
 <% unless @flights_avail.nil? %>
   <h2> Available Flights </h2>
-  <% @flights_avail.each do |flight| %>
-    <div>
-      <strong>Flight Number:</strong>
-      <%= flight.flight_number %>
-    </div>
-    <div>
-      <strong>Departing At:</strong>
-      <%= flight.start %>
-    </div>
-    <div>
-      <strong>From:</strong>
-      <%= flight.departure_airport.name %>
-    </div>
-    <div>
-      <strong>To:</strong>
-      <%= flight.arrival_airport.name %>
-    </div>
+  <%= form_with url: flights_path, method: :get, local: true do |f| %>
+    <ul>
+    <% @flights_avail.each do |flight| %>
+      <li>
+        <%= f.radio_button :flight_id, flight.id %>
+        <%= f.label :flight_id, "Flight ##{flight.flight_number} - #{flight.departure_airport.code} to #{flight.arrival_airport.code} at #{flight.start.strftime('%Y-%m-%d %H:%M')}" %>
+      </li>
+    <% end %>
+    </ul>
+
+    <%= f.submit "Book This Flight" %>
   <% end %>
 <% end %>
