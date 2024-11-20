@@ -1,10 +1,17 @@
 <h1>Flights</h1>
-<p>Arrival Airport</p>
-<%= select(:get, :arrival_airport_id, @airport_name_options) %>
-<p>Departure Airport</p>
-<%= select(:get, :departure_airport_id, @airport_name_options) %>
+<%= form_with url: flights_path, method: :get, local: true do |form| %>
+  <p>Arrival Airport</p>
+  <%= form.select :arrival_airport_id, @airport_name_options %>
+  <p>Departure Airport</p>
+  <%= form.select :departure_airport_id, @airport_name_options %>
+  <p>Departure Date and Time</p>
+  <%= form.select :start,
+    options_for_select(@formatted_flight_times.map { |formatted, time| [formatted, time.to_s] }),
+    prompt: "Select a datetime",
+    class: "form-control" %>
 
-<%= select_tag :start,
-options_for_select(@formatted_flight_times.map { |formatted, time| [formatted, time.to_s] }),
-prompt: "Select a datetime",
-class: "form-control" %>
+  <p>Number of Passengers
+  <%= form.select :passengers, [1, 2, 3, 4]  %>
+
+  <%= form.submit "Search Flights", class: "btn btn-primary" %>
+<% end %>
