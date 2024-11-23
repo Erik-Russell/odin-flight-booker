@@ -20,6 +20,7 @@ class FlightsController < ApplicationController
     departure_airport_id = params[:departure_airport_id]
     start = params[:start]
     passengers = params[:passengers]
+    @number_of_tickets = params[:passengers]
 
     # all flights
     @flights = Flight.all

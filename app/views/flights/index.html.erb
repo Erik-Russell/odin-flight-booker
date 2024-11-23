@@ -21,6 +21,7 @@
 <% unless @flights_avail.nil? %>
   <h2> Available Flights </h2>
   <%= form_with url: flights_path, method: :get, local: true do |f| %>
+    <%= f.hidden_field :number_of_tickets, value: @number_of_tickets %>
     <ul>
     <% @flights_avail.each do |flight| %>
       <li>
