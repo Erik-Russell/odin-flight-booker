@@ -46,13 +46,13 @@ shared_departure_airport = airports.sample
 shared_arrival_airport = airports.sample
 shared_start_time = Faker::Time.between(from: time_range.first, to: time_range.last)
 
-25.times do
+1000.times do
   Flight.create!(
     flight_number: generate_flight_number,
     departure_airport_id: [shared_departure_airport, airports.sample].sample,
     arrival_airport_id: [shared_arrival_airport, airports.sample].sample,
     start: [shared_start_time, Faker::Time.between(from: time_range.first, to: time_range.last)].sample,
-    duration: rand(1..5).hours + rand(0..59).minutes
+    duration: rand(1..15).hours + rand(0..59).minutes
   )
 end
 
