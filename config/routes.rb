@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get "bookings/new"
+  resources :bookings
 
   devise_for :users
 

@@ -1,2 +1,29 @@
 <h1>Bookings#new</h1>
 <p>Find me in app/views/bookings/new.html.erb</p>
+
+
+<p> Number of passengers: <%= @number_of_passengers %> </p>
+<p> Flight id: <%= @flight %> </p>
+
+
+<%= form_with model: @booking do |form| %>
+  <%= form.hidden_field :flight_id, value: params[:flight_id] %>
+  <%= form.hidden_field :number_of_passengers, value: @number_of_passengers %>
+
+  <% @booking.passengers.each_with_index do |passenger, index| %>
+    <div>
+      <h3>Passenger <%= index + 1 %></h3>
+      <%= form.fields_for :passengers, passenger do |passenger_form| %>
+        <%= passenger_form.label :name %>
+        <%= passenger_form.text_field :name %>
+        <br>
+        <%= passenger_form.label :email %>
+        <%= passenger_form.email_field :email %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= form.submit "Reserve" %>
+<% end %>
+
+<%= link_to 'Search for more flights', flights_path %>
