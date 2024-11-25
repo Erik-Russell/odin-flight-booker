@@ -1,0 +1,13 @@
+<%= @booking %>
+
+<h2>Booking #<%= @booking.id %></h2>
+
+<div>
+  <p>Passengers:</p>
+  <% @booking.passengers.each do |passenger| %>
+    <p>Name:</p>
+    <%= passenger.name %>
+    <p>Email:</p>
+    <%= passenger.email %>
+  <% end %>
+</div>
